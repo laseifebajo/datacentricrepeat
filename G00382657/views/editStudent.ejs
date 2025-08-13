@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Update Student</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Update Student</h1>
+        
+        <% if (errors.length > 0) { %>
+            <div class="error-messages">
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li><%= error %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        <% } %>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="sid">Student ID:</label>
+                <input type="text" id="sid" name="sid" value="<%= student.sid %>" readonly />
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="<%= student.name || '' %>" required />
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="<%= student.age || '' %>" required min="18" />
+            </div>
+            
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="/students" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

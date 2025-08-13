@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Lecturers (MongoDB)</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Lecturers (MongoDB)</h1>
+        
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div class="error-message">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Lecturer ID</th>
+                    <th>Name</th>
+                    <th>Department ID</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% lecturers.forEach(lecturer => { %>
+                    <tr>
+                        <td><%= lecturer._id %></td>
+                        <td><%= lecturer.name %></td>
+                        <td><%= lecturer.did %></td>
+                        <td>
+                            <a href="/lecturers/delete/<%= lecturer._id %>" 
+                               class="btn btn-danger"
+                               onclick="return confirm('Are you sure you want to delete <%= lecturer.name %>?')">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        
+        <div class="button-group">
+            <a href="/" class="btn btn-secondary">Home</a>
+        </div>
+    </div>
+</body>
+</html>
